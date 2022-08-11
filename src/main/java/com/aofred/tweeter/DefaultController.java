@@ -10,4 +10,7 @@ public class DefaultController {
     public String index() {
         return "index";
     }
+
+    @GetMapping("/homepage")
+    public String getHomepage() { return "homepage"; }
 }

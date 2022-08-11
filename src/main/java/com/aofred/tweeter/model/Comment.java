@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Comment extends AbstractPersistable<Long> {
 
+    private String commentText;
     @ManyToOne
     @JoinColumn(name = "commented_post_id")
     private Post commentedPost;

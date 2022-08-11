@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sign Up - Tweeter</title>
+</head>
+<body>
+  <h1>Sign up!</h1>
+
+  <form th:action="@{/process_register}" th:object="${user}" method="POST">
+    <table>
+      <tr>
+        <td>Full name </td>
+        <td><input type="text" th:field="*{fullName}" /></td>
+        <td th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">Incorrect name</td>
+      </tr>
+      <tr>
+        <td>Username </td>
+        <td><input type="text" th:field="*{username}" /></td>
+        <td th:if="${#fields.hasErrors('username')}" th:errors="*{username">Incorrect username</td>
+      </tr>
+      <tr>
+        <td>Password </td>
+        <td><input type="text" th:field="*{password}" /></td>
+        <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Incorrect password</td>
+      </tr>
+      <tr>
+        <td><button type="submit">Submit</button></td>
+      </tr>
+    </table>
+  </form>
+</body>
+</html>
