@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Tweeter</title>
+</head>
+<body>
+<div>
+    <p>TWEETER</p>
+    <p th:text="${loggedUser.fullName}">Nimi</p>
+</div>
+<div>
+    <form th:action="@{/feed}" th:object="${post}" method="POST">
+        <textarea th:field="*{content}" rows="4" cols="50">Write something here...</textarea>
+        <p th:if="${#fields.hasErrors('content')}" th:errors="*{content}" >Error</p>
+        <input type="submit" value="Post"/>
+    </form>
+</div>
+<div>
+    <ul>
+        <li th:each="post : ${posts}">
+            <p th:text="${post.author.fullName}">Author</p>
+            <p th:text="${post.content}">Content</p>
+            <p th:text="${#temporals.format(post.postDate, 'dd-MM-yyyy HH:mm')}"></p>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
